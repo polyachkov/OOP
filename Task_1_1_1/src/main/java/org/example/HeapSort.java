@@ -2,13 +2,13 @@ package org.example;
 
 public class HeapSort
 {
-    public static void heapsort(int arr[])
+    public static void sort(int[] arr)
     {
         int n = arr.length;
 
-        for (int i = n / 2 - 1; i >= 0; i--)
+        for (int i = n / 2 - 1; i >= 0; i--) {
             heapify(arr, n, i);
-
+        }
         for (int i=n-1; i>=0; i--)
         {
             int temp = arr[0];
@@ -19,7 +19,7 @@ public class HeapSort
         }
     }
 
-    public static void heapify(int arr[], int n, int i) {
+    private static void heapify(int[] arr, int n, int i) {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
@@ -36,12 +36,5 @@ public class HeapSort
 
             heapify(arr, n, largest);
         }
-    }
-    public static void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(arr[i]+" ");
-        System.out.println();
     }
 }

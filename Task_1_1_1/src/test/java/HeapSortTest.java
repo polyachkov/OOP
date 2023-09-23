@@ -1,3 +1,5 @@
+import java.util.Random;
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import org.example.HeapSort;
@@ -9,19 +11,7 @@ public class HeapSortTest {
         int[] arr = {12, 11, 13, 5, 6, 7};
         int[] expected = {5, 6, 7, 11, 12, 13};
 
-        HeapSort.heapsort(arr);
-
-        assertArrayEquals(expected, arr);
-    }
-
-    @Test
-    public void testHeapify() {
-        int[] arr = {4, 10, 3, 5, 1};
-        int n = arr.length;
-        int i = 0;
-        int[] expected = {10, 5, 3, 4, 1};
-
-        HeapSort.heapify(arr, n, i);
+        HeapSort.sort(arr);
 
         assertArrayEquals(expected, arr);
     }
@@ -31,7 +21,7 @@ public class HeapSortTest {
         int[] arr = {};
         int[] expected = {};
 
-        HeapSort.heapsort(arr);
+        HeapSort.sort(arr);
 
         assertArrayEquals(expected, arr);
     }
@@ -41,7 +31,31 @@ public class HeapSortTest {
         int[] arr = {5, 4, 5, 5, 5};
         int[] expected = {4, 5, 5, 5, 5};
 
-        HeapSort.heapsort(arr);
+        HeapSort.sort(arr);
+
+        assertArrayEquals(expected, arr);
+    }
+
+    @Test
+    public void testMassiveArray() {
+        int[] arr = new int[100000];
+        Random random = new Random();
+        for (int i = 0; i < 100000; i++)
+        {
+            int n = random.nextInt(Integer.MAX_VALUE);
+            arr[i] = n;
+        }
+
+        int[] expected = new int[100000];
+
+        expected = Arrays.copyOf(arr, 100000);
+
+        System.out.println(expected);
+        System.out.println(arr);
+
+        Arrays.sort(expected);
+
+        HeapSort.sort(arr);
 
         assertArrayEquals(expected, arr);
     }
