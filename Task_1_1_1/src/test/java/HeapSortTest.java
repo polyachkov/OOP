@@ -46,12 +46,7 @@ public class HeapSortTest {
             arr[i] = n;
         }
 
-        int[] expected = new int[100000];
-
-        expected = Arrays.copyOf(arr, 100000);
-
-        System.out.println(expected);
-        System.out.println(arr);
+        int[] expected = Arrays.copyOf(arr, 100000);
 
         Arrays.sort(expected);
 
