@@ -24,7 +24,7 @@ public class Polynomial
     }
 
     public int[] getCoefficients() {
-        return coefficients;
+        return Arrays.copyOf(coefficients, coefficients.length);
     }
 
     public Polynomial(int[] new_coefficients)
