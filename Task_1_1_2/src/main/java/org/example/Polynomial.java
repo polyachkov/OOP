@@ -143,7 +143,8 @@ public class Polynomial
         }
         return result;
     }
-    public Boolean equals(Polynomial check_poly)
+
+    public boolean equals(Polynomial check_poly)
     {
         int[] arr1 = coefficientsNormalize(check_poly.coefficients);
         int[] arr2 = coefficientsNormalize(this.coefficients);

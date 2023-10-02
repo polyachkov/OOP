@@ -98,7 +98,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void equalsTest()
+    public void EqualsTest()
     {
         int[] arr1 = {0, 6, 7, 3, 7, 99, 0, 0, 0, 0};
         int[] arr2 = {0, 6, 7, 3, 7, 99, 0};
