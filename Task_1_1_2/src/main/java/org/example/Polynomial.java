@@ -144,8 +144,19 @@ public class Polynomial
         return result;
     }
 
-    public boolean equals(Polynomial check_poly)
+    @Override
+    public boolean equals(Object obj)
     {
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
+        var check_poly = (Polynomial) obj;
+
         int[] arr1 = coefficientsNormalize(check_poly.coefficients);
         int[] arr2 = coefficientsNormalize(this.coefficients);
 
