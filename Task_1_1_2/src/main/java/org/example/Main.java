@@ -4,9 +4,9 @@ package org.example;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Polynomial p1 = new Polynomial(new int[] {4, 3, 6, 7});
-        Polynomial p2 = new Polynomial(new int[] {3, 2, 8});
+        Polynomial p1 = new Polynomial(new int[]{4, 3, 6, 7});
+        Polynomial p2 = new Polynomial(new int[]{3, 2, 8});
         var p3 = p1.sub(p2);
         System.out.println(p3);
     }
-}
+}   

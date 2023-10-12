@@ -1,13 +1,12 @@
-import org.junit.jupiter.api.Test;
 import org.example.Polynomial;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PolynomialTest {
 
     @Test
-    public void sumTest()
-    {
+    public void sumTest() {
         int[] arr1 = {5, 6, 7, 3, 0, 0};
         int[] arr2 = {5, 4, 0, 0, 5, 6, 8, 3};
 
@@ -22,8 +21,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void subTest()
-    {
+    public void subTest() {
         int[] arr1 = {5, 6, 7, 3, 0, 0};
         int[] arr2 = {5, 4, 0, 0, 5, 6, 8, 3};
 
@@ -38,8 +36,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void mulTest()
-    {
+    public void mulTest() {
         int[] arr1 = {3, 5, 0, 1};
         int[] arr2 = {2, 0, 0, 2, 0, 0, 0, 0};
 
@@ -54,8 +51,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void evaluateTest()
-    {
+    public void evaluateTest() {
         int[] arr1 = {3, 5, 0, 1, 7, 8, 0, 0};
 
         var pol1 = new Polynomial(arr1);
@@ -68,8 +64,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void differentiateTest()
-    {
+    public void differentiateTest() {
         int[] arr1 = {3, 5, 0, 1, 7, 8, 0, 0};
 
         var pol1 = new Polynomial(arr1);
@@ -83,8 +78,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void toStringTest()
-    {
+    public void toStringTest() {
         int[] arr1 = {3, 5, 0, 1, 7, 8, 0};
 
         var pol1 = new Polynomial(arr1);
@@ -98,14 +92,27 @@ public class PolynomialTest {
     }
 
     @Test
-    public void EqualsTest()
-    {
+    public void toStringEmpty() {
+        int[] arr1 = {};
+
+        var pol1 = new Polynomial(arr1);
+
+        String result = pol1.toString();
+
+        String expected = "0";
+
+        assertEquals(result, expected);
+
+    }
+
+    @Test
+    public void EqualsTest() {
         int[] arr1 = {0, 6, 7, 3, 7, 99, 0, 0, 0, 0};
         int[] arr2 = {0, 6, 7, 3, 7, 99, 0};
 
         var pol1 = new Polynomial(arr1);
         var pol2 = new Polynomial(arr2);
 
-        assertTrue(pol1.equals(pol2));
+        assertEquals(pol1, pol2);
     }
 }
