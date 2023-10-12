@@ -3,18 +3,21 @@ package org.example;
 import java.util.Arrays;
 
 /**
- * This is class that create a polynomial system that can
- * 1) sum polynomials
- * 2) subtract polynomials
- * 3) multiply polynomials
- * 4) evaluate polynomials for some X
- * 5) differentiate polynomials
- * 6) convert polynomials to string
- * 7) can check equals polynomials or not
+ * This is class that create a polynomial system that can.
+ * 1) sum of polynomials.
+ * 2) subtract polynomials.
+ * 3) multiply polynomials.
+ * 4) evaluate polynomials for some X.
+ * 5) differentiate polynomials.
+ * 6) convert polynomials to string.
+ * 7) can check equals polynomials or not.
  */
 public class Polynomial {
     private final int[] coefficients;
 
+    /**
+     * method for delete last zeros from coefficients array.
+     */
     private int[] coefficientsNormalize(int[] arr) {
         int tail = 0;
         for (int i = arr.length - 1; i >= 0; i--) {
@@ -31,12 +34,14 @@ public class Polynomial {
         return Arrays.copyOf(coefficients, coefficients.length);
     }
 
-    public Polynomial(int[] new_coefficients) {
-        this.coefficients = Arrays.copyOf(new_coefficients, new_coefficients.length);
+    public Polynomial(int[] newCoefficients) {
+        this.coefficients = Arrays.copyOf(newCoefficients, newCoefficients.length);
     }
 
-    public Polynomial sum(Polynomial sumPolynomial) // sum of two polynomials
-    {
+    /**
+     * sum of two polynomials.
+     */
+    public Polynomial sum(Polynomial sumPolynomial) {
         int max = Math.max(this.coefficients.length, sumPolynomial.coefficients.length);
         int[] result = new int[max];
 
@@ -50,13 +55,15 @@ public class Polynomial {
         return new Polynomial(result);
     }
 
-    public Polynomial sub(Polynomial sub_polynomial) // subtrahend two polynomials
-    {
-        int max = Math.max(this.coefficients.length, sub_polynomial.coefficients.length);
+    /**
+     * subtract two polynomials
+     */
+    public Polynomial sub(Polynomial subPolynomial) {
+        int max = Math.max(this.coefficients.length, subPolynomial.coefficients.length);
         int[] result = new int[max];
 
-        for (int i = 0; i < sub_polynomial.coefficients.length; i++) {
-            result[i] -= sub_polynomial.coefficients[i];
+        for (int i = 0; i < subPolynomial.coefficients.length; i++) {
+            result[i] -= subPolynomial.coefficients[i];
         }
         for (int i = 0; i < this.coefficients.length; i++) {
             result[i] += this.coefficients[i];
@@ -65,20 +72,25 @@ public class Polynomial {
         return new Polynomial(result);
     }
 
-    public Polynomial mul(Polynomial mul_polynomial) // multiply two polynomials
-    {
-        int length_res = this.coefficients.length + mul_polynomial.coefficients.length;
-        int[] result = new int[length_res];
+    /**
+     * multiply two polynomials
+     */
+    public Polynomial mul(Polynomial mulPolynomial) {
+        int lengthRes = this.coefficients.length + mulPolynomial.coefficients.length;
+        int[] result = new int[lengthRes];
 
         for (int i = 0; i < this.coefficients.length; i++) {
-            for (int j = 0; j < mul_polynomial.coefficients.length; j++) {
-                result[i + j] += this.coefficients[i] * mul_polynomial.coefficients[j];
+            for (int j = 0; j < mulPolynomial.coefficients.length; j++) {
+                result[i + j] += this.coefficients[i] * mulPolynomial.coefficients[j];
             }
         }
         result = coefficientsNormalize(result);
         return new Polynomial(result);
     }
 
+    /**
+     * eval with x.
+     */
     public int evaluate(int x) {
         int result = this.coefficients[0];
         for (int i = 1; i < this.coefficients.length; i++) {
@@ -87,6 +99,9 @@ public class Polynomial {
         return result;
     }
 
+    /**
+     * differentiate polynomials.
+     */
     public Polynomial differentiate(int n) {
         int[] result = Arrays.copyOf(this.coefficients, this.coefficients.length);
         if (n == 0) {
@@ -104,6 +119,9 @@ public class Polynomial {
         return new Polynomial(result).differentiate(n - 1);
     }
 
+    /**
+     * differentiate polynomials.
+     */
     @Override
     public String toString() {
         var coefficientsNormalized = coefficientsNormalize(this.coefficients);
@@ -147,6 +165,9 @@ public class Polynomial {
         return result.toString();
     }
 
+    /**
+     * differentiate polynomials.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -157,9 +178,9 @@ public class Polynomial {
             return false;
         }
 
-        var check_poly = (Polynomial) obj;
+        var checkPoly = (Polynomial) obj;
 
-        int[] arr1 = coefficientsNormalize(check_poly.coefficients);
+        int[] arr1 = coefficientsNormalize(checkPoly.coefficients);
         int[] arr2 = coefficientsNormalize(this.coefficients);
 
         if (Arrays.equals(arr1, arr2)) {

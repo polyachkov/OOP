@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * this is class for test the org.example.Polynomial class
+ * This is class for test the org.example.Polynomial class.
  */
 public class PolynomialTest {
 

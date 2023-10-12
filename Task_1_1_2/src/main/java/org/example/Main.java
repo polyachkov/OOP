@@ -7,6 +7,9 @@ package org.example;
  * Main class. This class makes no sense for us.
  */
 public class Main {
+    /**
+     *  Main method.
+     */
     public static void main(String[] args) {
         Polynomial p1 = new Polynomial(new int[]{4, 3, 6, 7});
         Polynomial p2 = new Polynomial(new int[]{3, 2, 8});
