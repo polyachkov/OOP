@@ -1,8 +1,14 @@
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.example.Polynomial;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * this is class for test the org.example.Polynomial class
+ */
 public class PolynomialTest {
 
     @Test
@@ -106,7 +112,7 @@ public class PolynomialTest {
     }
 
     @Test
-    public void EqualsTest() {
+    public void equalsTest() {
         int[] arr1 = {0, 6, 7, 3, 7, 99, 0, 0, 0, 0};
         int[] arr2 = {0, 6, 7, 3, 7, 99, 0};
 

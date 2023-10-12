@@ -2,6 +2,16 @@ package org.example;
 
 import java.util.Arrays;
 
+/**
+ * This is class that create a polynomial system that can
+ * 1) sum polynomials
+ * 2) subtract polynomials
+ * 3) multiply polynomials
+ * 4) evaluate polynomials for some X
+ * 5) differentiate polynomials
+ * 6) convert polynomials to string
+ * 7) can check equals polynomials or not
+ */
 public class Polynomial {
     private final int[] coefficients;
 
@@ -25,13 +35,13 @@ public class Polynomial {
         this.coefficients = Arrays.copyOf(new_coefficients, new_coefficients.length);
     }
 
-    public Polynomial sum(Polynomial sum_polynomial) // sum of two polynomials
+    public Polynomial sum(Polynomial sumPolynomial) // sum of two polynomials
     {
-        int max = Math.max(this.coefficients.length, sum_polynomial.coefficients.length);
+        int max = Math.max(this.coefficients.length, sumPolynomial.coefficients.length);
         int[] result = new int[max];
 
-        for (int i = 0; i < sum_polynomial.coefficients.length; i++) {
-            result[i] += sum_polynomial.coefficients[i];
+        for (int i = 0; i < sumPolynomial.coefficients.length; i++) {
+            result[i] += sumPolynomial.coefficients[i];
         }
         for (int i = 0; i < this.coefficients.length; i++) {
             result[i] += this.coefficients[i];
@@ -96,23 +106,23 @@ public class Polynomial {
 
     @Override
     public String toString() {
-        var coeffs = coefficientsNormalize(this.coefficients);
+        var coefficientsNormalized = coefficientsNormalize(this.coefficients);
         var result = new StringBuilder();
         boolean first = Boolean.TRUE;
-        for (int i = coeffs.length - 1; i >= 0; i--) {
-            if (coeffs[i] != 0) {
+        for (int i = coefficientsNormalized.length - 1; i >= 0; i--) {
+            if (coefficientsNormalized[i] != 0) {
                 if (first) {
                     first = Boolean.FALSE;
                 } else {
-                    if (coeffs[i] > 0) {
+                    if (coefficientsNormalized[i] > 0) {
                         result.append(" + ");
                     } else {
                         result.append(" - ");
                     }
                 }
 
-                if (coeffs[i] != 1) {
-                    result.append(Integer.toString(Math.abs(coeffs[i])));
+                if (coefficientsNormalized[i] != 1) {
+                    result.append(Math.abs(coefficientsNormalized[i]));
                 } else {
                     if (i == 0) {
                         result.append("1");
@@ -131,7 +141,7 @@ public class Polynomial {
                 }
             }
         }
-        if (coeffs.length == 0) {
+        if (coefficientsNormalized.length == 0) {
             result.append("0");
         }
         return result.toString();
