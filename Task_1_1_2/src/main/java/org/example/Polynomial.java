@@ -56,7 +56,7 @@ public class Polynomial {
     }
 
     /**
-     * subtract two polynomials
+     * subtract two polynomials.
      */
     public Polynomial sub(Polynomial subPolynomial) {
         int max = Math.max(this.coefficients.length, subPolynomial.coefficients.length);
@@ -73,7 +73,7 @@ public class Polynomial {
     }
 
     /**
-     * multiply two polynomials
+     * multiply two polynomials.
      */
     public Polynomial mul(Polynomial mulPolynomial) {
         int lengthRes = this.coefficients.length + mulPolynomial.coefficients.length;
