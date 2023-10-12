@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Polynomial
 {
-    private int[] coefficients;
+    private final int[] coefficients;
 
     private int[] coefficientsNormalize(int[] arr)
     {
@@ -112,11 +112,12 @@ public class Polynomial
     @Override
     public String toString()
     {
+        var coeffs = coefficientsNormalize(this.coefficients);
         var result = "";
         boolean first = Boolean.TRUE;
-        for (int i = this.coefficients.length - 1; i >= 0; i--)
+        for (int i = coeffs.length - 1; i >= 0; i--)
         {
-            if (this.coefficients[i] != 0)
+            if (coeffs[i] != 0)
             {
                 if (first)
                 {
@@ -124,12 +125,26 @@ public class Polynomial
                 }
                 else
                 {
-                    result = result.concat(" + ");
+                    if (coeffs[i] > 0)
+                    {
+                        result = result.concat(" + ");
+                    }
+                    else
+                    {
+                        result = result.concat(" - ");
+                    }
                 }
 
-                if (this.coefficients[i] != 1)
+                if (coeffs[i] != 1)
                 {
-                    result = result.concat("" + this.coefficients[i]);
+                    result = result.concat("" + Math.abs(coeffs[i]));
+                }
+                else
+                {
+                    if (i == 0)
+                    {
+                        result = result.concat("1");
+                    }
                 }
                 if (i > 1)
                 {
@@ -140,6 +155,16 @@ public class Polynomial
                     result = result.concat("x");
                 }
             }
+            else {
+                if (i == 0)
+                {
+                    result = result.concat(" + 0");
+                }
+            }
+        }
+        if (coeffs.length == 0)
+        {
+            result = "0";
         }
         return result;
     }
