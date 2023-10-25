@@ -16,8 +16,8 @@ public class TreeTest {
         root = new Tree<>("R1");
         Tree<String> a = root.addChild("A");
         assertNotNull(a);
-        assertEquals("A", a.data);
-        assertEquals(1, root.children.size());
+        assertEquals("A", a.getData());
+        assertEquals(1, root.getChildren().size());
     }
 
     @Test
@@ -28,8 +28,8 @@ public class TreeTest {
         a.addChild("C");
 
         a.remove();
-        assertNull(a.data);
-        assertNull(a.children);
-        assertEquals(0, root.children.size());
+        assertNull(a.getData());
+        assertNull(a.getChildren());
+        assertEquals(0, root.getChildren().size());
     }
 }

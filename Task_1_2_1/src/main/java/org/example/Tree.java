@@ -5,12 +5,44 @@ import org.jetbrains.annotations.NotNull;
 import javax.xml.crypto.Data;
 import java.util.*;
 
-public class Tree<DataType> {
-    public Tree<DataType> parent = null;
-    public DataType data;
-    public List<Tree<DataType>> children;
+public class Tree<DataType> implements Iterable<Tree<DataType>>{
+    private Tree<DataType> parent = null;
+    private DataType data;
+    private List<Tree<DataType>> children;
 
     private int modCnt = 0; // Число модификаций дерева
+
+    public Tree<DataType> getParent() {
+        return parent;
+    }
+
+    public void setParent(Tree<DataType> parent) {
+        this.parent = parent;
+    }
+
+    public DataType getData() {
+        return data;
+    }
+
+    public void setData(DataType data) {
+        this.data = data;
+    }
+
+    public List<Tree<DataType>> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Tree<DataType>> children) {
+        this.children = children;
+    }
+
+    public int getModCnt() {
+        return modCnt;
+    }
+
+    public void setModCnt(int modCnt) {
+        this.modCnt = modCnt;
+    }
 
     public Tree(DataType data) {
         this.data = data;
@@ -49,6 +81,12 @@ public class Tree<DataType> {
         return new DFSIterator();
     }
 
+    @NotNull
+    @Override
+    public Iterator<Tree<DataType>> iterator() {
+        return dfsIterator();
+    }
+
     private class DFSIterator implements Iterator<Tree<DataType>> {
         private final Stack<Tree<DataType>> stack;
         private final int expectedModCnt;
@@ -82,46 +120,9 @@ public class Tree<DataType> {
     }
 
     public Iterator<Tree<DataType>> bfsIterator() {
-        return new BFSIterator();
+        return new BFSIterator(this);
     }
 
-    private class BFSIterator implements Iterator<Tree<DataType>> {
-        private final Queue<Tree<DataType>> queue;
-        private final int expectedModificationCount;
-
-        public BFSIterator() {
-            queue = new LinkedList<>();
-            queue.add(Tree.this);
-            expectedModificationCount = modCnt;
-        }
-
-        @Override
-        public boolean hasNext() {
-            checkConcurrentModification();
-            return !queue.isEmpty();
-        }
-
-        @Override
-        public Tree<DataType> next() {
-            checkConcurrentModification();
-
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-
-            Tree<DataType> current = queue.poll();
-            if (current != null) {
-                queue.addAll(current.children);
-            }
-            return current;
-        }
-
-        private void checkConcurrentModification() {
-            if (expectedModificationCount != modCnt) {
-                throw new ConcurrentModificationException("Был модифицирован - ошибка");
-            }
-        }
-    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -163,6 +164,4 @@ public class Tree<DataType> {
             t.print();
         }
     }
-
-
 }
