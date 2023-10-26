@@ -1,16 +1,13 @@
 package org.example;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TreeTest {
@@ -98,5 +95,56 @@ public class TreeTest {
         assertEquals(a.getParent(), b);
         assertEquals(a.getModCnt(), 0);
         assertEquals(a.getChildren(), children);
+    }
+    @Test
+    public void toStringTest() throws DataNullException {
+        Tree<String> a = root.addChild("A");
+        Tree<String> b = root.addChild("B");
+
+        String expected = "Data --- R1\nChildren --- [ A B ]";
+        String result = root.toString();
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void cloneTest() throws DataNullException {
+        Tree<String> a = root.addChild("A");
+        Tree<String> b = root.addChild("B");
+        Tree<String> c = a.addChild("C");
+        Tree<String> d = a.addChild("D");
+
+        try {
+            Tree<String> clone = root.clone();
+
+            // Check that the cloned tree is not the same object
+            assertNotSame(root, clone);
+
+            // Check that the data is the same
+            assertEquals(root.getData(), clone.getData());
+
+            // Check that children are deep copied
+            for (int i = 0; i < root.getChildren().size(); i++) {
+                assertNotSame(root.getChildren().get(i), clone.getChildren().get(i));
+                assertEquals(root.getChildren().get(i).getData(), clone.getChildren().get(i).getData());
+            }
+
+            // Check that the structure is the same
+            assertEquals(root.toString(), clone.toString());
+        } catch (CloneNotSupportedException e) {
+            fail("Cloning should not throw an exception");
+        }
+    }
+
+    @Test
+    public void equalsTest() throws DataNullException {
+        Tree<String> a = root.addChild("A");
+        Tree<String> b = root.addChild("B");
+
+        Tree<String> root2 = new Tree<>("R1");
+        Tree<String> a2 = root2.addChild("A");
+        Tree<String> b2 = root2.addChild("B");
+
+        assertEquals(root, root2);
     }
 }

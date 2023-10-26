@@ -3,6 +3,7 @@ package org.example;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -103,15 +104,32 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
             return true;
         }
 
-        if (obj == null || this.getClass() != obj.getClass()) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
 
-        var some_tree = (Tree<?>) obj;
+        Tree<?> someTree = (Tree<?>) obj;
 
-        return this.data.equals(some_tree.data) && this.equals_children(some_tree);
+        // Сравнение данных в текущем узле
+        if (!data.equals(someTree.data)) {
+            return false;
+        }
 
+        // Сравнение количества детей
+        if (children.size() != someTree.children.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < this.getChildren().size(); i++) {
+            if (!this.getChildren().get(i).equals(someTree.getChildren().get(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
+
+
 
     /**
      * @param some_tree
