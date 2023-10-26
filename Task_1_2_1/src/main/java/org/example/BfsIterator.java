@@ -2,12 +2,26 @@ package org.example;
 
 import java.util.*;
 
-public class BFSIterator<DataType> implements Iterator<Tree<DataType>> {
+public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
+    private final Tree<DataType> tree;
     private final Queue<Tree<DataType>> queue;
     private final int expectedModificationCount;
 
-    public BFSIterator(Tree<DataType> Tree_s) {
+    public Tree<DataType> getTree() {
+        return tree;
+    }
+
+    public Queue<Tree<DataType>> getQueue() {
+        return queue;
+    }
+
+    public int getExpectedModificationCount() {
+        return expectedModificationCount;
+    }
+
+    public BfsIterator(Tree<DataType> Tree_s) {
         queue = new LinkedList<>();
+        this.tree = Tree_s;
         queue.add(Tree_s);
         expectedModificationCount = Tree_s.getModCnt();
     }
@@ -34,7 +48,7 @@ public class BFSIterator<DataType> implements Iterator<Tree<DataType>> {
     }
 
     private void checkConcurrentModification() {
-        if (expectedModificationCount != modCnt) {
+        if (expectedModificationCount != tree.getModCnt()) {
             throw new ConcurrentModificationException("Был модифицирован - ошибка");
         }
     }

@@ -2,26 +2,33 @@ package org.example;
 
 import org.jetbrains.annotations.NotNull;
 
-import javax.xml.crypto.Data;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class Tree<DataType> implements Iterable<Tree<DataType>>{
+public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
     private Tree<DataType> parent = null;
     private DataType data;
     private List<Tree<DataType>> children;
 
     private int modCnt = 0; // Число модификаций дерева
 
-    public Tree<DataType> getParent() {
-        return parent;
+    public Tree(DataType data) throws DataNullException {
+        if (data == null) {
+            throw new DataNullException();
+        }
+        this.data = data;
+        children = new ArrayList<>();
     }
+
+    public Tree<DataType> getParent() {return this.parent;}
 
     public void setParent(Tree<DataType> parent) {
         this.parent = parent;
     }
 
     public DataType getData() {
-        return data;
+        return this.data;
     }
 
     public void setData(DataType data) {
@@ -44,11 +51,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>{
         this.modCnt = modCnt;
     }
 
-    public Tree(DataType data) {
-        this.data = data;
-        children = new ArrayList<>();
-    }
-
     public Tree<DataType> addChild(Tree<DataType> child) {
         if (child != null) {
             child.parent = this;
@@ -60,7 +62,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>{
         }
     }
 
-    public Tree<DataType> addChild(DataType data) {
+    public Tree<DataType> addChild(DataType data) throws DataNullException {
         Tree<DataType> child = new Tree<>(data);
         child.parent = this;
         this.children.add(child);
@@ -74,11 +76,11 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>{
             modCnt++;
         }
         this.data = null;
-        this.children = null;
+        this.parent = null;
     }
 
     public Iterator<Tree<DataType>> dfsIterator() {
-        return new DFSIterator();
+        return new DfsIterator<DataType>(this);
     }
 
     @NotNull
@@ -87,40 +89,9 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>{
         return dfsIterator();
     }
 
-    private class DFSIterator implements Iterator<Tree<DataType>> {
-        private final Stack<Tree<DataType>> stack;
-        private final int expectedModCnt;
-
-        public DFSIterator() {
-            stack = new Stack<>();
-            stack.push(Tree.this);
-            expectedModCnt = modCnt;
-        }
-
-        @Override
-        public boolean hasNext() {
-            if (expectedModCnt != modCnt) {
-                throw new ConcurrentModificationException("Был модифицирован - ошибка");
-            }
-            return !stack.isEmpty();
-        }
-
-        @Override
-        public Tree<DataType> next() {
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-
-            Tree<DataType> current = stack.pop();
-            for (int i = current.children.size() - 1; i >= 0; i--) {
-                stack.push(current.children.get(i));
-            }
-            return current;
-        }
-    }
 
     public Iterator<Tree<DataType>> bfsIterator() {
-        return new BFSIterator(this);
+        return new BfsIterator<DataType>(this);
     }
 
     @Override
@@ -129,20 +100,27 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>{
             return true;
         }
 
-        if (obj == null || getClass() != obj.getClass()) {
+        if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-        Tree<DataType> some_tree = (Tree<DataType>) obj;
+
+        var some_tree = (Tree<?>) obj;
+
         return this.data.equals(some_tree.data) && this.equals_children(some_tree);
+
     }
 
-    public boolean equals_children( Tree<DataType> some_tree) {
-        List<Tree<DataType>> list1 = new ArrayList<>(List.copyOf(this.children));
-        List<Tree<DataType>> list2 = new ArrayList<>(List.copyOf(some_tree.children));
+    /**
+     * @param some_tree
+     * @return
+     */
+    private boolean equals_children(Tree<?> some_tree) {
+        List<Tree<?>> list1 = new ArrayList<>(List.copyOf(this.children));
+        List<Tree<?>> list2 = new ArrayList<>(List.copyOf(some_tree.children));
         if (list1.size() != list2.size()) {
             return false;
         }
-        for (Tree<DataType> curr : list1) {
+        for (Tree<?> curr : list1) {
             for (int j = 0; j < list2.size(); j++) {
                 if (curr.equals(list2.get(j))) {
                     list2.remove(j);
@@ -155,13 +133,46 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>{
         return true;
     }
 
-    public void print()
-    {
-        System.out.println(this);
-        System.out.println(this.data);
-        System.out.println(this.children.toString());
-        for (Tree<DataType> t : this.children) {
-            t.print();
+    /**
+     * @return
+     * @throws CloneNotSupportedException
+     */
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Tree<DataType> clone() throws CloneNotSupportedException {
+        try {
+            Tree<DataType> clonedTree = (Tree<DataType>) super.clone();
+
+            clonedTree.data = this.data;
+
+            clonedTree.children = new ArrayList<>();
+            for (Tree<DataType> child : this.children) {
+                Tree<DataType> clonedChild = child.clone();
+                clonedChild.parent = clonedTree;
+                clonedTree.children.add(clonedChild);
+            }
+
+            clonedTree.modCnt = 0;
+
+            return clonedTree;
+        } catch (CloneNotSupportedException e) {
+            throw new CloneNotSupportedException("Cloning failed");
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Data --- ").append(data);
+        if (!children.isEmpty()) {
+            sb.append("\nChildren --- [ ");
+            for (Tree<DataType> child : children) {
+                sb.append(child.getData()).append(" ");
+            }
+            sb.append("]");
+        }
+        return sb.toString();
+    }
+
 }
