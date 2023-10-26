@@ -1,11 +1,14 @@
 package org.example;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
+/**
+ * Tree class.
+ * @param <DataType>
+ */
 public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
     private Tree<DataType> parent = null;
     private DataType data;
