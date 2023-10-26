@@ -8,7 +8,9 @@ import java.util.Queue;
 
 /**
  * BfsIterator for Tree.
+ *
  * @param <DataType>
+ *
  */
 public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
     private final Tree<DataType> tree;
@@ -17,7 +19,9 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * tree getter.
+     *
      * @return
+     *
      */
     public Tree<DataType> getTree() {
         return tree;
@@ -25,7 +29,9 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * queue getter.
+     *
      * @return
+     *
      */
     public Queue<Tree<DataType>> getQueue() {
         return queue;
@@ -33,7 +39,9 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * mod cnt ex getter.
+     *
      * @return
+     *
      */
     public int getExpectedModificationCount() {
         return expectedModificationCount;
@@ -41,7 +49,9 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * BfsIterator constructor.
+     *
      * @param Tree_s
+     *
      */
     public BfsIterator(Tree<DataType> Tree_s) {
         queue = new LinkedList<>();
@@ -52,7 +62,9 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * hasNext.
+     *
      * @return
+     *
      */
     @Override
     public boolean hasNext() {
@@ -62,7 +74,9 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * next.
+     *
      * @return
+     *
      */
     @Override
     public Tree<DataType> next() {

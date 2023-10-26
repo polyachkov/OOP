@@ -9,8 +9,11 @@ package org.example;
 public class Main {
     /**
      * Just main.
+     *
      * @param args
+     *
      * @throws DataNullException
+     *
      */
     public static void main(String[] args) throws DataNullException {
         Tree<String> tree = new Tree<>("R1");

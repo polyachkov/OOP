@@ -12,13 +12,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+/**
+ * Tester class
+ */
 public class TreeTest {
     private Tree<String> root;
 
     /**
      * Before each test.
+     *
      * @throws DataNullException
+     *
      */
     @BeforeEach
     public void setup() throws DataNullException {
@@ -27,7 +31,9 @@ public class TreeTest {
 
     /**
      * addchild test.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void testAddChild() throws DataNullException {
@@ -52,7 +58,9 @@ public class TreeTest {
 
     /**
      * testRemoveChild.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void testRemoveChild() throws DataNullException {
@@ -68,7 +76,9 @@ public class TreeTest {
 
     /**
      * DfsIterator test.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void testDFSIterator() throws DataNullException {
@@ -87,7 +97,9 @@ public class TreeTest {
 
     /**
      * BfsIterator test.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void testBFSIterator() throws DataNullException {
@@ -107,7 +119,9 @@ public class TreeTest {
 
     /**
      * some tests of setters and getters.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void SettersGettersTest() throws DataNullException {
@@ -126,7 +140,9 @@ public class TreeTest {
 
     /**
      * test toString.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void toStringTest() throws DataNullException {
@@ -141,7 +157,9 @@ public class TreeTest {
 
     /**
      * clone test.
+     *
      * @throws DataNullException
+     *
      */
     @Test
     public void cloneTest() throws DataNullException, CloneNotSupportedException {
@@ -163,7 +181,9 @@ public class TreeTest {
 
     /**
      * equals test.
+     *
      * @throws DataNullException
+     * 
      */
     @Test
     public void equalsTest() throws DataNullException {
