@@ -10,6 +10,10 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
     private final Tree<DataType> tree;
     private final int expectedModCnt;
 
+    /**
+     * DfsIterator constructor.
+     * @param tree
+     */
     public DfsIterator(Tree<DataType> tree) {
         stack = new Stack<>();
         this.tree = tree;

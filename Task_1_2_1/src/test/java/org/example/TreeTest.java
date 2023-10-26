@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class TreeTest {
     private Tree<String> root;
@@ -86,15 +89,12 @@ public class TreeTest {
 
         List<Tree<String>> children = new ArrayList<Tree<String>>();
 
-        a.setChildren(children);
         a.setData("C");
-        a.setParent(b);
-        a.setModCnt(0);
 
         assertEquals(a.getData(), "C");
-        assertEquals(a.getParent(), b);
-        assertEquals(a.getModCnt(), 0);
-        assertEquals(a.getChildren(), children);
+        assertEquals(a.getParent(), root);
+        assertEquals(a.getModCnt(), 1);
+        assertEquals(a.getChildren(), new ArrayList<>());
     }
     @Test
     public void toStringTest() throws DataNullException {
