@@ -36,17 +36,11 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * get Parent.
-     *
-     * @return
-     *
      */
     public Tree<DataType> getParent() {return this.parent;}
 
     /**
      * get Data.
-     *
-     * @return
-     *
      */
     public DataType getData() {
         return this.data;
@@ -54,7 +48,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * set Data for Node.
-     * 
+     *
      * @param data
      *
      */
@@ -65,9 +59,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * getChildren.
-     *
-     * @return
-     *
      */
     public List<Tree<DataType>> getChildren() {
         return children;
@@ -75,9 +66,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * get ModCnt.
-     *
-     * @return
-     *
      */
     public int getModCnt() {
         return modCnt;
@@ -87,8 +75,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * addChild for Tree.
      *
      * @param child
-     *
-     * @return
      *
      */
     public Tree<DataType> addChild(Tree<DataType> child) {
@@ -106,8 +92,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * addChild (for data).
      *
      * @param data
-     *
-     * @return
      *
      * @throws DataNullException
      *
@@ -134,9 +118,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * dfsIterator.
-     *
-     * @return
-     *
      */
     public Iterator<Tree<DataType>> dfsIterator() {
         return new DfsIterator<DataType>(this);
@@ -144,9 +125,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * base iterator (Interface iterable).
-     *
-     * @return
-     *
      */
     @NotNull
     @Override
@@ -156,7 +134,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * bfsIterator.
-     * @return
      */
     public Iterator<Tree<DataType>> bfsIterator() {
         return new BfsIterator<DataType>(this);
@@ -166,9 +143,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * equals.
      *
      * @param obj
-     *
-     * @return
-     *
      */
     @Override
     public boolean equals(Object obj) {
@@ -205,9 +179,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * equals_children.
      *
      * @param some_tree
-     *
-     * @return
-     *
      */
     private boolean equals_children(Tree<?> some_tree) {
         List<Tree<?>> list1 = new ArrayList<>(List.copyOf(this.children));
@@ -230,8 +201,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * clone method.
-     *
-     * @return
      *
      * @throws CloneNotSupportedException
      *
@@ -261,9 +230,6 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     /**
      * toString.
-     *
-     * @return
-     *
      */
     @Override
     public String toString() {

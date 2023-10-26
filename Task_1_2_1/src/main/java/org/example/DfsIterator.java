@@ -31,9 +31,6 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * stack getter.
-     *
-     * @return
-     *
      */
     public Stack<Tree<DataType>> getStack() {
         return stack;
@@ -41,9 +38,6 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * tree getter.
-     *
-     * @return
-     *
      */
     public Tree<DataType> getTree() {
         return tree;
@@ -52,8 +46,6 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
     /**
      * mod cnt ex getter.
      *
-     * @return
-     *
      */
     public int getExpectedModCnt() {
         return expectedModCnt;
@@ -61,9 +53,6 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * hasNext.
-     *
-     * @return
-     *
      */
     @Override
     public boolean hasNext() {
@@ -75,9 +64,6 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
 
     /**
      * next.
-     *
-     * @return
-     *
      */
     @Override
     public Tree<DataType> next() {
