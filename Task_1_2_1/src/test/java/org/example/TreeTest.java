@@ -8,8 +8,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-
+import java.util.List;
 
 
 public class TreeTest {
@@ -79,5 +80,23 @@ public class TreeTest {
             result.append(" ");
         }
         assertEquals("R1 A B C D ", result.toString());
+    }
+
+    @Test
+    public void SettersGettersTest() throws DataNullException {
+        Tree<String> a = root.addChild("A");
+        Tree<String> b = root.addChild("B");
+
+        List<Tree<String>> children = new ArrayList<Tree<String>>();
+
+        a.setChildren(children);
+        a.setData("C");
+        a.setParent(b);
+        a.setModCnt(0);
+
+        assertEquals(a.getData(), "C");
+        assertEquals(a.getParent(), b);
+        assertEquals(a.getModCnt(), 0);
+        assertEquals(a.getChildren(), children);
     }
 }

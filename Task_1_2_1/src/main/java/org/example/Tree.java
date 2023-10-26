@@ -25,6 +25,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     public void setParent(Tree<DataType> parent) {
         this.parent = parent;
+        modCnt ++;
     }
 
     public DataType getData() {
@@ -33,6 +34,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     public void setData(DataType data) {
         this.data = data;
+        modCnt ++;
     }
 
     public List<Tree<DataType>> getChildren() {
@@ -41,6 +43,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
 
     public void setChildren(List<Tree<DataType>> children) {
         this.children = children;
+        modCnt ++;
     }
 
     public int getModCnt() {
