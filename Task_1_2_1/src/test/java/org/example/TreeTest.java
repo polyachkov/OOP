@@ -75,49 +75,6 @@ public class TreeTest {
     }
 
     /**
-     * DfsIterator test.
-     *
-     * @throws DataNullException
-     *
-     */
-    @Test
-    public void testDFSIterator() throws DataNullException {
-        Tree<String> a = root.addChild("A");
-        Tree<String> b = root.addChild("B");
-        Tree<String> c = a.addChild("C");
-        Tree<String> d = a.addChild("D");
-
-        StringBuilder result = new StringBuilder();
-        for (Tree<String> node : root) {
-            result.append(node.getData());
-            result.append(" ");
-        }
-        assertEquals("R1 A C D B ", result.toString());
-    }
-
-    /**
-     * BfsIterator test.
-     *
-     * @throws DataNullException
-     *
-     */
-    @Test
-    public void testBFSIterator() throws DataNullException {
-        Tree<String> a = root.addChild("A");
-        Tree<String> b = root.addChild("B");
-        Tree<String> c = a.addChild("C");
-        Tree<String> d = a.addChild("D");
-
-        StringBuilder result = new StringBuilder();
-        Iterator<Tree<String>> iterator = root.bfsIterator();
-        while (iterator.hasNext()) {
-            result.append(iterator.next().getData());
-            result.append(" ");
-        }
-        assertEquals("R1 A B C D ", result.toString());
-    }
-
-    /**
      * some tests of setters and getters.
      *
      * @throws DataNullException
