@@ -116,6 +116,16 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
         this.parent = null;
     }
 
+    public void delete() {
+        if (this.parent != null) {
+            this.parent.children.remove(this);
+            modCnt++;
+            this.parent.children.addAll(this.children);
+        }
+        this.data = null;
+        this.parent = null;
+    }
+
     /**
      * dfsIterator.
      */
