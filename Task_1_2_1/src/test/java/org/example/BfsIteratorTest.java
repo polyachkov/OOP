@@ -1,12 +1,14 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Iterator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * tests for bfsIterator.
+ */
 public class BfsIteratorTest {
     private Tree<String> root;
 
@@ -28,7 +30,7 @@ public class BfsIteratorTest {
      *
      */
     @Test
-    public void testBFSIterator() throws DataNullException {
+    public void testBfsIterator() throws DataNullException {
         Tree<String> a = root.addChild("A");
         Tree<String> b = root.addChild("B");
         Tree<String> c = a.addChild("C");

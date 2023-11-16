@@ -1,10 +1,13 @@
 package org.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Test for DfsIterator.
+ */
 public class DfsIteratorTest {
 
     private Tree<String> root;
@@ -27,7 +30,7 @@ public class DfsIteratorTest {
      *
      */
     @Test
-    public void testDFSIterator() throws DataNullException {
+    public void testDfsIterator() throws DataNullException {
         Tree<String> a = root.addChild("A");
         Tree<String> b = root.addChild("B");
         Tree<String> c = a.addChild("C");

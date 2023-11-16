@@ -2,7 +2,7 @@ package org.example;
 
 
 /**
- * my exception
+ * my exception.
  */
 public class DataNullException extends Throwable {
 

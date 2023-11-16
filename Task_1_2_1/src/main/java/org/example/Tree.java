@@ -119,7 +119,7 @@ public class Tree<DataT> implements Iterable<Tree<DataT>>, Cloneable {
     }
 
     /**
-     * delete element, wtih save children
+     * delete element, wtih save children.
      */
     public void delete() {
         if (this.parent != null) {
