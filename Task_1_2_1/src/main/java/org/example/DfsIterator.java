@@ -8,12 +8,12 @@ import java.util.Stack;
 /**
  * DfsIterator for Tree.
  *
- * @param <DataType>
+ * @param <DataT>
  *
  */
-public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
-    private final Stack<Tree<DataType>> stack;
-    private final Tree<DataType> tree;
+public class DfsIterator<DataT> implements Iterator<Tree<DataT>> {
+    private final Stack<Tree<DataT>> stack;
+    private final Tree<DataT> tree;
     private final int expectedModCnt;
 
     /**
@@ -22,7 +22,7 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
      * @param tree
      *
      */
-    public DfsIterator(Tree<DataType> tree) {
+    public DfsIterator(Tree<DataT> tree) {
         stack = new Stack<>();
         this.tree = tree;
         stack.push(tree);
@@ -32,14 +32,14 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
     /**
      * stack getter.
      */
-    public Stack<Tree<DataType>> getStack() {
+    public Stack<Tree<DataT>> getStack() {
         return stack;
     }
 
     /**
      * tree getter.
      */
-    public Tree<DataType> getTree() {
+    public Tree<DataT> getTree() {
         return tree;
     }
 
@@ -66,12 +66,12 @@ public class DfsIterator<DataType> implements Iterator<Tree<DataType>> {
      * next.
      */
     @Override
-    public Tree<DataType> next() {
+    public Tree<DataT> next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
 
-        Tree<DataType> current = stack.pop();
+        Tree<DataT> current = stack.pop();
         for (int i = current.getChildren().size() - 1; i >= 0; i--) {
             stack.push(current.getChildren().get(i));
         }

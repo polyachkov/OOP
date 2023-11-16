@@ -8,13 +8,13 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Tree class.
  *
- * @param <DataType>
+ * @param <DataT>
  *
  */
-public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
-    private Tree<DataType> parent = null;
-    private DataType data;
-    private List<Tree<DataType>> children;
+public class Tree<DataT> implements Iterable<Tree<DataT>>, Cloneable {
+    private Tree<DataT> parent = null;
+    private DataT data;
+    private List<Tree<DataT>> children;
 
     private int modCnt = 0; // Число модификаций дерева
 
@@ -26,7 +26,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * @throws DataNullException
      *
      */
-    public Tree(DataType data) throws DataNullException {
+    public Tree(DataT data) throws DataNullException {
         if (data == null) {
             throw new DataNullException();
         }
@@ -37,12 +37,14 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
     /**
      * get Parent.
      */
-    public Tree<DataType> getParent() {return this.parent;}
+    public Tree<DataT> getParent() {
+        return this.parent;
+    }
 
     /**
      * get Data.
      */
-    public DataType getData() {
+    public DataT getData() {
         return this.data;
     }
 
@@ -52,7 +54,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * @param data
      *
      */
-    public void setData(DataType data) {
+    public void setData(DataT data) {
         this.data = data;
         modCnt ++;
     }
@@ -60,7 +62,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
     /**
      * getChildren.
      */
-    public List<Tree<DataType>> getChildren() {
+    public List<Tree<DataT>> getChildren() {
         return children;
     }
 
@@ -77,7 +79,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * @param child
      *
      */
-    public Tree<DataType> addChild(Tree<DataType> child) {
+    public Tree<DataT> addChild(Tree<DataT> child) {
         if (child != null) {
             child.parent = this;
             this.children.add(child);
@@ -96,8 +98,8 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      * @throws DataNullException
      *
      */
-    public Tree<DataType> addChild(DataType data) throws DataNullException {
-        Tree<DataType> child = new Tree<>(data);
+    public Tree<DataT> addChild(DataT data) throws DataNullException {
+        Tree<DataT> child = new Tree<>(data);
         child.parent = this;
         this.children.add(child);
         modCnt++;
@@ -129,8 +131,8 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
     /**
      * dfsIterator.
      */
-    public Iterator<Tree<DataType>> dfsIterator() {
-        return new DfsIterator<DataType>(this);
+    public Iterator<Tree<DataT>> dfsIterator() {
+        return new DfsIterator<DataT>(this);
     }
 
     /**
@@ -138,15 +140,15 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      */
     @NotNull
     @Override
-    public Iterator<Tree<DataType>> iterator() {
+    public Iterator<Tree<DataT>> iterator() {
         return dfsIterator();
     }
 
     /**
      * bfsIterator.
      */
-    public Iterator<Tree<DataType>> bfsIterator() {
-        return new BfsIterator<DataType>(this);
+    public Iterator<Tree<DataT>> bfsIterator() {
+        return new BfsIterator<DataT>(this);
     }
 
     /**
@@ -217,15 +219,15 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
      */
     @Override
     @SuppressWarnings("unchecked")
-    public Tree<DataType> clone() throws CloneNotSupportedException {
+    public Tree<DataT> clone() throws CloneNotSupportedException {
         try {
-            Tree<DataType> clonedTree = (Tree<DataType>) super.clone();
+            Tree<DataT> clonedTree = (Tree<DataT>) super.clone();
 
             clonedTree.data = this.data;
 
             clonedTree.children = new ArrayList<>();
-            for (Tree<DataType> child : this.children) {
-                Tree<DataType> clonedChild = child.clone();
+            for (Tree<DataT> child : this.children) {
+                Tree<DataT> clonedChild = child.clone();
                 clonedChild.parent = clonedTree;
                 clonedTree.children.add(clonedChild);
             }
@@ -247,7 +249,7 @@ public class Tree<DataType> implements Iterable<Tree<DataType>>, Cloneable {
         sb.append("Data --- ").append(data);
         if (!children.isEmpty()) {
             sb.append("\nChildren --- [ ");
-            for (Tree<DataType> child : children) {
+            for (Tree<DataT> child : children) {
                 sb.append(child.getData()).append(" ");
             }
             sb.append("]");

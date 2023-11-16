@@ -9,25 +9,25 @@ import java.util.Queue;
 /**
  * BfsIterator for Tree.
  *
- * @param <DataType>
+ * @param <DataT>
  *
  */
-public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
-    private final Tree<DataType> tree;
-    private final Queue<Tree<DataType>> queue;
+public class BfsIterator<DataT> implements Iterator<Tree<DataT>> {
+    private final Tree<DataT> tree;
+    private final Queue<Tree<DataT>> queue;
     private final int expectedModificationCount;
 
     /**
      * tree getter.
      */
-    public Tree<DataType> getTree() {
+    public Tree<DataT> getTree() {
         return tree;
     }
 
     /**
      * queue getter.
      */
-    public Queue<Tree<DataType>> getQueue() {
+    public Queue<Tree<DataT>> getQueue() {
         return queue;
     }
 
@@ -41,14 +41,14 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
     /**
      * BfsIterator constructor.
      *
-     * @param Tree_s
+     * @param TreeS
      *
      */
-    public BfsIterator(Tree<DataType> Tree_s) {
+    public BfsIterator(Tree<DataT> TreeS) {
         queue = new LinkedList<>();
-        this.tree = Tree_s;
-        queue.add(Tree_s);
-        expectedModificationCount = Tree_s.getModCnt();
+        this.tree = TreeS;
+        queue.add(TreeS);
+        expectedModificationCount = TreeS.getModCnt();
     }
 
     /**
@@ -64,14 +64,14 @@ public class BfsIterator<DataType> implements Iterator<Tree<DataType>> {
      * next.
      */
     @Override
-    public Tree<DataType> next() {
+    public Tree<DataT> next() {
         checkConcurrentModification();
 
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
 
-        Tree<DataType> current = queue.poll();
+        Tree<DataT> current = queue.poll();
         if (current != null) {
             queue.addAll(current.getChildren());
         }
