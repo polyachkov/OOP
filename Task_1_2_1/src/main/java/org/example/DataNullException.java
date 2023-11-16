@@ -1,5 +1,9 @@
 package org.example;
 
+
+/**
+ * my exception
+ */
 public class DataNullException extends Throwable {
 
     /**

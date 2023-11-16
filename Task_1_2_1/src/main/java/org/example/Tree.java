@@ -56,7 +56,7 @@ public class Tree<DataT> implements Iterable<Tree<DataT>>, Cloneable {
      */
     public void setData(DataT data) {
         this.data = data;
-        modCnt ++;
+        modCnt++;
     }
 
     /**
@@ -118,6 +118,9 @@ public class Tree<DataT> implements Iterable<Tree<DataT>>, Cloneable {
         this.parent = null;
     }
 
+    /**
+     * delete element, wtih save children
+     */
     public void delete() {
         if (this.parent != null) {
             this.parent.children.remove(this);
@@ -154,7 +157,6 @@ public class Tree<DataT> implements Iterable<Tree<DataT>>, Cloneable {
     /**
      * equals.
      *
-     * @param obj
      */
     @Override
     public boolean equals(Object obj) {
@@ -190,11 +192,10 @@ public class Tree<DataT> implements Iterable<Tree<DataT>>, Cloneable {
     /**
      * equals_children.
      *
-     * @param some_tree
      */
-    private boolean equals_children(Tree<?> some_tree) {
+    private boolean equals_children(Tree<?> someTree) {
         List<Tree<?>> list1 = new ArrayList<>(List.copyOf(this.children));
-        List<Tree<?>> list2 = new ArrayList<>(List.copyOf(some_tree.children));
+        List<Tree<?>> list2 = new ArrayList<>(List.copyOf(someTree.children));
         if (list1.size() != list2.size()) {
             return false;
         }

@@ -41,14 +41,14 @@ public class BfsIterator<DataT> implements Iterator<Tree<DataT>> {
     /**
      * BfsIterator constructor.
      *
-     * @param TreeS
+     * @param SomeTree
      *
      */
-    public BfsIterator(Tree<DataT> TreeS) {
+    public BfsIterator(Tree<DataT> SomeTree) {
         queue = new LinkedList<>();
-        this.tree = TreeS;
-        queue.add(TreeS);
-        expectedModificationCount = TreeS.getModCnt();
+        this.tree = SomeTree;
+        queue.add(SomeTree);
+        expectedModificationCount = SomeTree.getModCnt();
     }
 
     /**
