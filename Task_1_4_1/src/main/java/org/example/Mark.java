@@ -15,23 +15,11 @@ public class Mark {
         return semester;
     }
 
-    public void setSemester(int semester) {
-        this.semester = semester;
-    }
-
     public String getSubjectName() {
         return subjectName;
     }
 
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
-    }
-
     public int getGrade() {
         return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
     }
 }
