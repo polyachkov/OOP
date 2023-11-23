@@ -3,11 +3,9 @@ package org.example;
 import java.util.*;
 
 public class CreditBook {
-    private List<Integer> semesters = new ArrayList<Integer>();
-    private List<String> subjects = new ArrayList<String>();
     public List<Integer> grades = new ArrayList<Integer>();
     private List<Mark> marks = new ArrayList<Mark>();
-    private int cvalification;
+    private int qualificationMark;
     private final String studentName;
     private final String studentGroup;
 
@@ -30,8 +28,6 @@ public class CreditBook {
         }
         Mark newMark = new Mark(semester, subjectName, grade);
         grades.add(grade);
-        subjects.add(subjectName);
-        semesters.add(semester);
         marks.add(newMark);
         return 0;
     }
@@ -47,6 +43,7 @@ public class CreditBook {
         if (finded == null) {
             return -1;
         }
+        grades.remove(finded.getGrade());
         marks.remove(finded);
         return 0;
 
@@ -57,8 +54,8 @@ public class CreditBook {
         for (Integer grade : grades) {
             sum += grade;
         }
-        if (cvalification != 0) {
-            sum += cvalification;
+        if (qualificationMark != 0) {
+            sum += qualificationMark;
             return (float) sum / (grades.size() + 1);
         }
         return (float) sum / grades.size();
@@ -96,7 +93,7 @@ public class CreditBook {
     }
 
     public boolean isRedDiploma() {
-        if (cvalification != 5) {
+        if (qualificationMark != 5) {
             return false;
         }
 
@@ -114,7 +111,25 @@ public class CreditBook {
         return true;
     }
 
+    public boolean isBigMoneyMoney(int semester) {
+        List<Integer> grades = new ArrayList<Integer>();
+
+        for (Mark mark : marks) {
+            if (mark.getSemester() == semester) {
+                grades.add(mark.getGrade());
+            }
+        }
+        if (Collections.frequency(grades, 5) == grades.size()) {
+            return true;
+        }
+        return false;
+    }
+
     public List<Mark> getMarks() {
         return List.copyOf(this.marks);
+    }
+
+    public void setQualificationMark(int qualificationMark) {
+        this.qualificationMark = qualificationMark;
     }
 }
