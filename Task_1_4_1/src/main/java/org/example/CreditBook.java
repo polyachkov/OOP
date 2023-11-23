@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class CreditBook {
     private List<Integer> semesters = new ArrayList<Integer>();
@@ -27,7 +25,7 @@ public class CreditBook {
                 break;
             }
         }
-        if (finded != null) {
+        if (finded != null || grade > 5 || grade < 0) {
             return -1;
         }
         Mark newMark = new Mark(semester, subjectName, grade);
@@ -95,6 +93,25 @@ public class CreditBook {
             }
         }
         return grades;
+    }
+
+    public boolean isRedDiploma() {
+        if (cvalification != 5) {
+            return false;
+        }
+
+        var lastGrades = getLastMarks();
+        if ((float) Collections.frequency(lastGrades, 5) / lastGrades.size() < 0.75) {
+            return false;
+        }
+
+        for (int grade : grades) {
+            if (grade <= 3) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public List<Mark> getMarks() {
