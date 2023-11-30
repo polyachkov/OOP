@@ -1,8 +1,9 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Collections;
+import java.util.List;
+
 
 /**
  * text.
@@ -48,7 +49,9 @@ public class CreditBook {
     public int deleteMark(int semester, String subjectName, int grade) {
         Mark finded = null;
         for (Mark test : marks) {
-            if((test.getSemester() == semester) && (test.getSubjectName().equals(subjectName)) && (test.getGrade() == grade) ){
+            if ((test.getSemester() == semester) &&
+                    (test.getSubjectName().equals(subjectName)) &&
+                    (test.getGrade() == grade)) {
                 finded = test;
                 break;
             }
@@ -98,7 +101,7 @@ public class CreditBook {
         List<String> names = new ArrayList<String>();
         List<Integer> semesters = new ArrayList<Integer>();
         List<Integer> grades = new ArrayList<Integer>();
-        for(Mark mark : marks ) {
+        for (Mark mark : marks) {
             int index = getNameIndex(names, mark.getSubjectName());
             if (index == -1) {
                 names.add(mark.getSubjectName());
@@ -106,8 +109,8 @@ public class CreditBook {
                 grades.add(mark.getGrade());
             } else {
                 if (mark.getSemester() > semesters.get(index)) {
-                   semesters.set(index, mark.getSemester());
-                   grades.set(index, mark.getGrade());
+                    semesters.set(index, mark.getSemester());
+                    grades.set(index, mark.getGrade());
                 }
             }
         }
