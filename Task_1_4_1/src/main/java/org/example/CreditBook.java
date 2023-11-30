@@ -1,7 +1,9 @@
 package org.example;
 
 import java.util.*;
-
+/**
+ * text.
+ */
 public class CreditBook {
     public List<Integer> grades = new ArrayList<Integer>();
     private List<Mark> marks = new ArrayList<Mark>();
@@ -9,12 +11,17 @@ public class CreditBook {
     private final String studentName;
     private final String studentGroup;
 
-
+    /**
+     * text.
+     */
     public CreditBook(String studentName, String studentGroup) {
         this.studentName = studentName;
         this.studentGroup = studentGroup;
     }
 
+    /**
+     * text.
+     */
     public int addMark(int semester, String subjectName, int grade) {
         Mark finded = null;
         for(Mark test : marks){
@@ -32,6 +39,9 @@ public class CreditBook {
         return 0;
     }
 
+    /**
+     * text.
+     */
     public int deleteMark(int semester, String subjectName, int grade) {
         Mark finded = null;
         for(Mark test : marks){
@@ -49,6 +59,9 @@ public class CreditBook {
 
     }
 
+    /**
+     * text.
+     */
     public float avgMarks() {
         int sum = 0;
         for (Integer grade : grades) {
@@ -61,6 +74,9 @@ public class CreditBook {
         return (float) sum / grades.size();
     }
 
+    /**
+     * text.
+     */
     private int getNameIndex(List<String> names, String str) {
         int i = 0;
         for (String name : names) {
@@ -72,6 +88,9 @@ public class CreditBook {
         return -1;
     }
 
+    /**
+     * text.
+     */
     private List<Integer> getLastMarks() {
         List<String> names = new ArrayList<String>();
         List<Integer> semesters = new ArrayList<Integer>();
@@ -92,6 +111,9 @@ public class CreditBook {
         return grades;
     }
 
+    /**
+     * text.
+     */
     public boolean isRedDiploma() {
         if (qualificationMark != 5) {
             return false;
@@ -111,6 +133,9 @@ public class CreditBook {
         return true;
     }
 
+    /**
+     * text.
+     */
     public boolean isBigMoneyMoney(int semester) {
         List<Integer> grades = new ArrayList<Integer>();
 
@@ -125,10 +150,16 @@ public class CreditBook {
         return false;
     }
 
+    /**
+     * text.
+     */
     public List<Mark> getMarks() {
         return List.copyOf(this.marks);
     }
 
+    /**
+     * text.
+     */
     public void setQualificationMark(int qualificationMark) {
         this.qualificationMark = qualificationMark;
     }

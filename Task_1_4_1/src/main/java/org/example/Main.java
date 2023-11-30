@@ -1,6 +1,12 @@
 package org.example;
 
+/**
+ * text.
+ */
 public class Main {
+    /**
+     * text.
+     */
     public static void main(String[] args) {
         CreditBook credits = new CreditBook("Dmitry", "22216");
         credits.addMark(1, "OOP", 4);

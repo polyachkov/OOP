@@ -3,7 +3,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class foe test.
+ */
 public class CreditBookTest {
+    /**
+     * test method.
+     */
     @Test
     public void Avgtest() {
         CreditBook credits = new CreditBook("Dmitry", "22216");
@@ -19,7 +25,9 @@ public class CreditBookTest {
 
         assertEquals(credits.avgMarks(), 4.0);
     }
-
+    /**
+     * test method.
+     */
     @Test
     public void isBigMoneyMoneyTest() {
         CreditBook credits = new CreditBook("Dmitry", "22216");
@@ -36,6 +44,9 @@ public class CreditBookTest {
         assertFalse(credits.isBigMoneyMoney(2));
     }
 
+    /**
+     * test method.
+     */
     @Test
     public void isRedDiplomaTestTrue() {
         CreditBook credits = new CreditBook("Dmitry", "22216");
@@ -47,6 +58,9 @@ public class CreditBookTest {
         assertTrue(credits.isRedDiploma());
     }
 
+    /**
+     * test method.
+     */
     @Test
     public void isRedDiplomaTestFalse() {
         CreditBook credits = new CreditBook("Dmitry", "22216");
@@ -58,6 +72,9 @@ public class CreditBookTest {
         assertFalse(credits.isRedDiploma());
     }
 
+    /**
+     * test method.
+     */
     @Test
     public void deleteMarkTest() {
         CreditBook credits = new CreditBook("Dmitry", "22216");
