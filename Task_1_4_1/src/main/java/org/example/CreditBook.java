@@ -1,6 +1,9 @@
 package org.example;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+
 /**
  * text.
  */
@@ -24,8 +27,8 @@ public class CreditBook {
      */
     public int addMark(int semester, String subjectName, int grade) {
         Mark finded = null;
-        for(Mark test : marks){
-            if((test.getSemester() == semester) && (test.getSubjectName().equals(subjectName))){
+        for (Mark test : marks) {
+            if ((test.getSemester() == semester) && (test.getSubjectName().equals(subjectName))) {
                 finded = test;
                 break;
             }
@@ -44,7 +47,7 @@ public class CreditBook {
      */
     public int deleteMark(int semester, String subjectName, int grade) {
         Mark finded = null;
-        for(Mark test : marks){
+        for (Mark test : marks) {
             if((test.getSemester() == semester) && (test.getSubjectName().equals(subjectName)) && (test.getGrade() == grade) ){
                 finded = test;
                 break;
