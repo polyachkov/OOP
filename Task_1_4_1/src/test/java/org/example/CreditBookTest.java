@@ -1,19 +1,21 @@
 package org.example;
-import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Class foe test.
  */
 public class CreditBookTest {
+
     /**
      * test method.
      */
     @Test
-    public void Avgtest() {
+    public void avgTest() {
         CreditBook credits = new CreditBook("Dmitry", "22216");
         credits.addMark(1, "OOP", 5);
         credits.addMark(1, "OOP", 4);
