@@ -68,7 +68,7 @@ public class SubStringFinder {
         return new String(block.toString().getBytes(charset), charset);
     }
 
-    /**
+    /** 
      * find with filename in resources.
      */
     public static ArrayList<Long> find(String filename, String subString, Charset charset) throws IOException {
