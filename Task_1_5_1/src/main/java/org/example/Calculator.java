@@ -12,26 +12,6 @@ import java.util.Stack;
 public class Calculator {
     public static String[] operations = new String[] {"+", "-", "*", "/", "log", "pow", "sqrt", "sin", "cos"};
 
-
-    public static void calculator() {
-        while(true) {
-            System.out.print("Введите выражение в префиксной форме: ");
-            Scanner s = new Scanner(System.in);
-            String expression = s.nextLine();
-            try {
-                Double result = calculateExpression(expression);
-                System.out.print("Result: ");
-                System.out.println(result);
-            } catch (LogarithmIncorrectArgumentException | DivisionByZeroException | IllegalExpressionException |
-                     RootLessThanZeroException e) {
-                System.out.print("ERROR: ");
-                System.out.println(e.getMessage());
-
-            }
-
-        }
-    }
-
     public static Double calculateExpression(String expr) throws
             DivisionByZeroException,
             IllegalExpressionException,
