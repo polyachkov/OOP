@@ -29,7 +29,7 @@ public class Main {
             start = System.currentTimeMillis();
             PrimeNumbers.hasNonPrimeParallelThread(testData, j - 1);
             end = System.currentTimeMillis();
-            System.out.println(j);
+            System.out.println(j - 1);
             series.add(j, end - start);
         }
         start = System.currentTimeMillis();
@@ -42,7 +42,7 @@ public class Main {
         // Создаем график
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "a graph of some points",
-                "Experiment",
+                "Experiment Number",
                 "MS",
                 dataset
         );
