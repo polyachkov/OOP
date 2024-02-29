@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.example"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"nsu.task_2_1_1.exceptions"},{"l":"nsu.task_2_1_1.graph"},{"l":"nsu.task_2_1_1.primes"},{"l":"nsu.task_2_1_1.primes.additions"},{"l":"nsu.task_2_1_1.primes.realizations"}]
