@@ -1,4 +1,4 @@
-package org.example;
+package nsu.task_2_1_1.graph;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

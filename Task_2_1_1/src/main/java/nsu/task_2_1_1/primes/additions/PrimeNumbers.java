@@ -1,4 +1,4 @@
-package org.example;
+package nsu.task_2_1_1.primes.additions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,12 +24,7 @@ public class PrimeNumbers {
             }
         }
 
-        // Преобразуем список в массив
-        int[] primesArray = new int[primes.size()];
-        for (int i = 0; i < primes.size(); i++) {
-            primesArray[i] = primes.get(i);
-        }
-        return primesArray;
+        return primes.stream().mapToInt(i -> i).toArray();
     }
     public static boolean isPrime(int n) {
         if (n <= 1) {

@@ -1,5 +1,6 @@
-package org.example;
+package nsu.task_2_1_1.graph;
 
+import nsu.task_2_1_1.primes.additions.PrimeNumbers;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -7,7 +8,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
