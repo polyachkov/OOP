@@ -9,15 +9,15 @@ public class ParallelStreamCheckPrime extends AbstractCheckPrime {
 
     @Override
     public boolean hasNonePrime(int[] array, int NumberOfThreads){
-        try (ForkJoinPool customThreadPool = new ForkJoinPool(NumberOfThreads)){
+        ForkJoinPool customThreadPool = new ForkJoinPool(NumberOfThreads);
+        try {
             return customThreadPool.submit(() ->
                     Arrays.stream(array)
                             .parallel()
                             .anyMatch(num -> !AbstractCheckPrime.isPrime(num))
             ).join();
-        } catch (Exception e) {
-            e.printStackTrace(); // Обработка исключения или логирование его
-            return false; // В случае исключения возвращаем false
+        } finally {
+            customThreadPool.close(); // закрыть пул потоков после использования
         }
     }
 }
