@@ -1,6 +1,6 @@
-package nsu.task_2_1_1.primes.additions;
+package nsu.NoPrimeInArray.primes.additions;
 
-import nsu.task_2_1_1.primes.AbstractCheckPrime;
+import nsu.NoPrimeInArray.primes.AbstractCheckPrime;
 
 import java.util.Arrays;
 
@@ -17,7 +17,7 @@ public class PrimeCheckThread extends Thread{
     @Override
     public void run() {
         boolean result = Arrays.stream(array)
-                .noneMatch(AbstractCheckPrime::isPrime);
+                .allMatch(AbstractCheckPrime::isPrime);
         if (!result) {  // Меняем значение только в том случае, если нашли.
             resource.setResult(true);
         }

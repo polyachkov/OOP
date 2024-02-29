@@ -1,13 +1,13 @@
-package nsu.task_2_1_1.primes.realizations;
+package nsu.NoPrimeInArray.primes.realizations;
 
-import nsu.task_2_1_1.primes.AbstractCheckPrime;
+import nsu.NoPrimeInArray.primes.AbstractCheckPrime;
 
 import java.util.Arrays;
 
 public class SequentialCheckPrime extends AbstractCheckPrime {
-
+    @Override
     public boolean hasNonePrime(int[] array, int NumberOfThreads){
         return Arrays.stream(array)
-                .noneMatch(AbstractCheckPrime::isPrime);
+                .anyMatch(num -> !isPrime(num));
     }
 }

@@ -1,4 +1,4 @@
-package nsu.task_2_1_1.primes;
+package nsu.NoPrimeInArray.primes;
 
 abstract public class AbstractCheckPrime {
 

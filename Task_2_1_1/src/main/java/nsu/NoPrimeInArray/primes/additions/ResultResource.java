@@ -1,4 +1,4 @@
-package nsu.task_2_1_1.primes.additions;
+package nsu.NoPrimeInArray.primes.additions;
 
 public class ResultResource {
     public boolean isResult() {

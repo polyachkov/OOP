@@ -1,8 +1,8 @@
-package nsu.task_2_1_1.primes.realizations;
+package nsu.NoPrimeInArray.primes.realizations;
 
-import nsu.task_2_1_1.primes.AbstractCheckPrime;
-import nsu.task_2_1_1.primes.additions.PrimeCheckThread;
-import nsu.task_2_1_1.primes.additions.ResultResource;
+import nsu.NoPrimeInArray.primes.AbstractCheckPrime;
+import nsu.NoPrimeInArray.primes.additions.PrimeCheckThread;
+import nsu.NoPrimeInArray.primes.additions.ResultResource;
 
 import java.util.Arrays;
 
