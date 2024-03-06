@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="nsu.NoPrimeInArray.realizations.ParallelCheckPrimeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-02-29T16:49:59" hostname="DESKTOP-6BQSQQB" time="0.019">
+  <properties/>
+  <testcase name="hasNonePrimeTest()" classname="nsu.NoPrimeInArray.realizations.ParallelCheckPrimeTest" time="0.019"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
