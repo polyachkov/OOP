@@ -6,8 +6,8 @@ import java.util.Arrays;
 
 public class PrimeCheckThread extends Thread{
 
-    int[] array;
-    ResultResource resource;
+    private final int[] array;
+    private final ResultResource resource;
 
     public PrimeCheckThread(int[] array, ResultResource resource) {
         this.array = array;
@@ -18,8 +18,10 @@ public class PrimeCheckThread extends Thread{
     public void run() {
         boolean result = Arrays.stream(array)
                 .allMatch(AbstractCheckPrime::isPrime);
-        if (!result) {  // Меняем значение только в том случае, если нашли.
-            resource.setResult(true);
+        synchronized (resource) {
+            if (!result) {  // Меняем значение только в том случае, если нашли.
+                resource.setResult(true);
+            }
         }
     }
 
