@@ -14,5 +14,5 @@ abstract public class AbstractCheckPrime {
         return true;
     }
 
-    public abstract boolean hasNonePrime(int[] array, int NumberOfThreads);
+    public abstract boolean hasNonePrime(int[] array);
 }

@@ -17,14 +17,38 @@ import java.util.List;
 
 public class Graph {
 
-    static int numberOfProcessors = Runtime.getRuntime().availableProcessors();
+    static int numberOfProcessors = 6; // Runtime.getRuntime().availableProcessors()
     static int[] testData;
 
-    public static int[] generateData(AbstractCheckPrime obj) {
+    public static int[] generateSequential(AbstractCheckPrime obj) {
         int[] result = new int[numberOfProcessors];
         for (int i = 1; i <= numberOfProcessors; i++) {
             long start = System.currentTimeMillis();
-            obj.hasNonePrime(testData, i);
+            obj.hasNonePrime(testData);
+            long end = System.currentTimeMillis();
+            result[i-1] = (int) (end - start);
+        }
+        return result;
+    }
+
+    public static int[] generateParallel() {
+        int[] result = new int[numberOfProcessors];
+        for (int i = 1; i <= numberOfProcessors; i++) {
+            ParallelCheckPrime obj = new ParallelCheckPrime(i);
+            long start = System.currentTimeMillis();
+            obj.hasNonePrime(testData);
+            long end = System.currentTimeMillis();
+            result[i-1] = (int) (end - start);
+        }
+        return result;
+    }
+
+    public static int[] generateParallelStream() {
+        int[] result = new int[numberOfProcessors];
+        for (int i = 1; i <= numberOfProcessors; i++) {
+            ParallelStreamCheckPrime obj = new ParallelStreamCheckPrime(i);
+            long start = System.currentTimeMillis();
+            obj.hasNonePrime(testData);
             long end = System.currentTimeMillis();
             result[i-1] = (int) (end - start);
         }
@@ -71,11 +95,11 @@ public class Graph {
     public static void main(String[] args) {
         int[] xData = generateArray(numberOfProcessors);
 
-        testData = generatePrimes(5000000);
+        testData = generatePrimes(10000000);
         testData[testData.length - 1] = 8;
-        int[] yData1 = generateData(new SequentialCheckPrime());
-        int[] yData2 = generateData(new ParallelCheckPrime());
-        int[] yData3 = generateData(new ParallelStreamCheckPrime());
+        int[] yData1 = generateSequential(new SequentialCheckPrime());
+        int[] yData2 = generateParallel();
+        int[] yData3 = generateParallelStream();
 
 
 

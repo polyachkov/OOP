@@ -8,9 +8,14 @@ import java.util.Arrays;
 
 public class ParallelCheckPrime extends AbstractCheckPrime {
 
+    int NumberOfThreads;
+
+    public ParallelCheckPrime(int NumberOfThreads) {
+        this.NumberOfThreads = NumberOfThreads;
+    }
 
     @Override
-    public boolean hasNonePrime(int[] array, int NumberOfThreads) {
+    public boolean hasNonePrime(int[] array) {
         ResultResource result = new ResultResource();
         Thread[] threads = new Thread[NumberOfThreads];
         int chunkSize = array.length / NumberOfThreads;

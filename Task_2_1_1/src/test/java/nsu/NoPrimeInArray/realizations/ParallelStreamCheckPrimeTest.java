@@ -9,13 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ParallelStreamCheckPrimeTest {
     @Test
     public void hasNonePrimeTest() {
-        ParallelStreamCheckPrime obj = new ParallelStreamCheckPrime();
-
         int numberOfProcessors = Runtime.getRuntime().availableProcessors();
+        ParallelStreamCheckPrime obj = new ParallelStreamCheckPrime(numberOfProcessors);
+
+
         int[] test1 = {1,2,3,4};
         int[] test2 = {2,3,5,7};
 
-        assertTrue(obj.hasNonePrime(test1, numberOfProcessors));
-        assertFalse(obj.hasNonePrime(test2, numberOfProcessors));
+        assertTrue(obj.hasNonePrime(test1));
+        assertFalse(obj.hasNonePrime(test2));
     }
 }

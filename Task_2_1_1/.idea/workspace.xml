@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78a14287-d134-4102-bc76-13521b4ccdd9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/additions/PrimeCheckThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/additions/PrimeCheckThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/AbstractCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/AbstractCheckPrime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelCheckPrime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelStreamCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelStreamCheckPrime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/SequentialCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/SequentialCheckPrime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelCheckPrimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelCheckPrimeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelStreamCheckPrimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelStreamCheckPrimeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/SequentialCheckPrimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/SequentialCheckPrimeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +29,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2dLgCPP9byKUGGhhGJsrhjyDuRK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,6 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Task_2_1_1 [:Graph.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Task__2__1__1",
