@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class ParallelCheckPrime extends AbstractCheckPrime {
 
-    int NumberOfThreads;
+    private final int NumberOfThreads;
 
     public ParallelCheckPrime(int NumberOfThreads) {
         this.NumberOfThreads = NumberOfThreads;

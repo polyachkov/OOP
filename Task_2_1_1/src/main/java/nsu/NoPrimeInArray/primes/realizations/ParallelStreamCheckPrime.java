@@ -7,7 +7,7 @@ import java.util.concurrent.ForkJoinPool;
 
 public class ParallelStreamCheckPrime extends AbstractCheckPrime {
 
-    int NumberOfThreads;
+    private final int NumberOfThreads;
 
     public ParallelStreamCheckPrime(int NumberOfThreads) {
         this.NumberOfThreads = NumberOfThreads;

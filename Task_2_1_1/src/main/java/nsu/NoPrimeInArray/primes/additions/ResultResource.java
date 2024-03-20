@@ -9,6 +9,6 @@ public class ResultResource {
         this.result = result;
     }
 
-    boolean result = false;
+    private boolean result = false;
 
 }

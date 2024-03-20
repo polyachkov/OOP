@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78a14287-d134-4102-bc76-13521b4ccdd9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/AbstractCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/AbstractCheckPrime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelCheckPrime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelStreamCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/ParallelStreamCheckPrime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/SequentialCheckPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nsu/NoPrimeInArray/primes/realizations/SequentialCheckPrime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelCheckPrimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelCheckPrimeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelStreamCheckPrimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/ParallelStreamCheckPrimeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/SequentialCheckPrimeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/nsu/NoPrimeInArray/realizations/SequentialCheckPrimeTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="78a14287-d134-4102-bc76-13521b4ccdd9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

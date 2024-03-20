@@ -17,10 +17,10 @@ import java.util.List;
 
 public class Graph {
 
-    static int numberOfProcessors = 6; // Runtime.getRuntime().availableProcessors()
-    static int[] testData;
+    private static int numberOfProcessors = 6; // Runtime.getRuntime().availableProcessors()
+    private static int[] testData;
 
-    public static int[] generateSequential(AbstractCheckPrime obj) {
+    private static int[] generateSequential(AbstractCheckPrime obj) {
         int[] result = new int[numberOfProcessors];
         for (int i = 1; i <= numberOfProcessors; i++) {
             long start = System.currentTimeMillis();
@@ -31,7 +31,7 @@ public class Graph {
         return result;
     }
 
-    public static int[] generateParallel() {
+    private static int[] generateParallel() {
         int[] result = new int[numberOfProcessors];
         for (int i = 1; i <= numberOfProcessors; i++) {
             ParallelCheckPrime obj = new ParallelCheckPrime(i);
@@ -43,7 +43,7 @@ public class Graph {
         return result;
     }
 
-    public static int[] generateParallelStream() {
+    private static int[] generateParallelStream() {
         int[] result = new int[numberOfProcessors];
         for (int i = 1; i <= numberOfProcessors; i++) {
             ParallelStreamCheckPrime obj = new ParallelStreamCheckPrime(i);
