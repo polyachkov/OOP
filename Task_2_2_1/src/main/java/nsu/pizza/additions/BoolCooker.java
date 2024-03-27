@@ -3,7 +3,7 @@ package nsu.pizza.additions;
 public class BoolCooker {
     public boolean value = false;
 
-    public void setTrue() {
+    public synchronized void setTrue() {
         value = true;
     }
 }

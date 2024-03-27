@@ -16,6 +16,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     implementation("org.jfree:jfreechart:1.5.3")
     implementation("com.google.code.gson:gson:2.9.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.19.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.19.0")
 }
 
 tasks.test {

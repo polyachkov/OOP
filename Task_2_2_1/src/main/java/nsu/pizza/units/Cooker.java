@@ -1,13 +1,17 @@
 package nsu.pizza.units;
 
 import nsu.pizza.additions.Order;
+import nsu.pizza.additions.ReadInfo;
 import nsu.pizza.exceptions.NoOrderException;
 import nsu.pizza.exceptions.NotEnoughSpace;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
 public class Cooker extends Thread{
+    private static final Logger userLogger = LogManager.getLogger(Cooker.class);
     private final Queue<Order> orderQueue;
     private final int cookerNumber;
     private final int timeToCook;
@@ -41,7 +45,7 @@ public class Cooker extends Thread{
                 while (true) {
                     try{
                         currentOrder = checkAndGetOrder();
-                        System.out.println("Cooker number "
+                        userLogger.info("Cooker number "
                                 + cookerNumber + " get order number "
                                 + currentOrder.getOrderNum() + " "
                                 + currentOrder.getOrderName());
@@ -55,7 +59,7 @@ public class Cooker extends Thread{
                     }
                 }
                 if(isInterrupted()) {
-                    System.out.println("Cooker " + cookerNumber + " ended");
+                    userLogger.info("Cooker " + cookerNumber + " ended");
                     break;
                 }
             } else{
@@ -90,7 +94,7 @@ public class Cooker extends Thread{
             }
             else {
                 storehouse.offer(currentOrder);
-                System.out.println("Cooker " + cookerNumber + " pushed order " + currentOrder.getOrderNum());
+                userLogger.info("Cooker " + cookerNumber + " pushed order " + currentOrder.getOrderNum());
                 currentOrder = null;
             }
         }

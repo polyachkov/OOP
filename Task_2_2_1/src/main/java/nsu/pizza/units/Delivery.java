@@ -3,7 +3,8 @@ package nsu.pizza.units;
 import nsu.pizza.additions.BoolCooker;
 import nsu.pizza.additions.Order;
 import nsu.pizza.exceptions.NoOrderException;
-import nsu.pizza.exceptions.NotEnoughSpace;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +12,12 @@ import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
 public class Delivery extends Thread{
+    private static final Logger userLogger = LogManager.getLogger(Delivery.class);
     private final int numberOfPizzas;
     private final int timeToDeliver;
     private final int deliverNumber;
     private final Queue<Order> storehouse;
-    private List<Order> currentOrders;
+    private final List<Order> currentOrders;
     private final long endTime;
     private final BoolCooker cookerEnd;
 
@@ -52,14 +54,14 @@ public class Delivery extends Thread{
 
     @Override
     public void run() {
-        System.out.println("Deliver number " + deliverNumber + " started.");
+        userLogger.info("Deliver number " + deliverNumber + " started.");
         while(true){
             if (currentOrders.isEmpty()) {
                 while (true) {
                     try{
                         currentOrders.addAll(checkAndGetOrders());
                         String numbersOrd = soutOrd(currentOrders);
-                        System.out.print("Deliver number "
+                        userLogger.info("Deliver number "
                                 + deliverNumber + " get orders with numbers " + numbersOrd + "\n");
                         break;
                     } catch (NoOrderException Ex) {
@@ -71,13 +73,13 @@ public class Delivery extends Thread{
                     }
                 }
                 if(isInterrupted()) {
-                    System.out.println("Deliver " + deliverNumber + " ended");
+                    userLogger.info("Deliver " + deliverNumber + " ended");
                     break;
                 }
             } else{
                 wait(timeToDeliver);
                 currentOrders.clear();
-                System.out.println("Deliver number " + deliverNumber + " ended order");
+                userLogger.info("Deliver number " + deliverNumber + " ended order");
             }
         }
     }

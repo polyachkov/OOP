@@ -1,25 +1,25 @@
-package nsu.pizza.units;
+package nsu.pizza;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import nsu.pizza.additions.BoolCooker;
+import nsu.pizza.additions.ReadInfo;
 import nsu.pizza.info.StructConfig;
 import nsu.pizza.additions.Order;
+import nsu.pizza.units.Cooker;
+import nsu.pizza.units.Delivery;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class Pizzeria {
-    public static String[] parseString1(String input) {
-        String[] parts = input.split(" ");
-        if (parts.length != 2 || !parts[0].matches("\\d+")) {
-            throw new IllegalArgumentException("Неверный формат данных");
-        }
-        return parts;
-    }
-
-    public static void main(String[] args) {
+public class PizzeriaApplication {
+    private static final Logger userLogger = LogManager.getLogger(PizzeriaApplication.class);
+    public static void main(String[] args) { 
         BoolCooker cookerEnd = new BoolCooker();
 
         StructConfig myObject = null;
@@ -28,14 +28,23 @@ public class Pizzeria {
             myObject = gson.fromJson(reader, StructConfig.class);
             System.out.println(myObject.storehouseNum);
         } catch (JsonSyntaxException | JsonIOException | IOException e) {
-            e.printStackTrace();
+            userLogger.error("ERROR TO READ JSON");
+            System.exit(1);
         }
 
         Queue<Order> orders = new LinkedList<>();
         Queue<Order> storehouse = new LinkedList<>();
 
         long start = System.currentTimeMillis();
-        long endTime = start + (myObject.timeToWork * 1000L);
+
+        long endTime = 0;
+        if (myObject != null) {
+            endTime = start + (myObject.timeToWork * 1000L);
+        }
+        else {
+            userLogger.error("ERROR TO READ JSON");
+            System.exit(1);
+        }
 
         List<Thread> threadListCooker = new ArrayList<>();
         List<Thread> threadListDeliver = new ArrayList<>();
@@ -52,53 +61,34 @@ public class Pizzeria {
             threadListDeliver.add(tmp);
         }
 
-        Thread userInputThread = new Thread(() -> {
-            Scanner scanner = new Scanner(System.in);
-            while (true) {
-                String input = scanner.nextLine();
-                try{
-                    String[] parts = parseString1(input);
-                    int number = Integer.parseInt(parts[0]);
-                    String name = parts[1];
-                    synchronized (orders) {
-                        orders.offer(new Order(number, name));
-                    }
-                } catch (IllegalArgumentException Ex) {
-                    System.out.println("НЕВЕРНЫЙ ФОРМАТ ДАННЫХ");
-                }
-            }
-        });
+        Thread userInputThread = new Thread(new ReadInfo(orders));
 
         userInputThread.start();
 
-        while(System.currentTimeMillis() < endTime) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            Thread.sleep(endTime - System.currentTimeMillis());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
 
         for (Thread thread : threadListCooker) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                userLogger.error("Interrupted thread join Cookers");
             }
         }
-        System.out.println("Повара завершены");
-        synchronized (cookerEnd){
-            cookerEnd.setTrue();
-        }
+        userLogger.info("Повара завершены");
+        cookerEnd.setTrue();
 
         for (Thread thread : threadListDeliver) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                userLogger.error("Interrupted thread join Deliver");
             }
         }
-        System.out.println("Все потоки завершили выполнение.");
+        userLogger.info("Все потоки завершили выполнение");
 
     }
 }
