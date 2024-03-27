@@ -39,7 +39,7 @@ public class Cooker extends Thread{
 
     @Override
     public void run() {
-        System.out.println("Cooker number " + cookerNumber + " started.");
+        userLogger.info("Cooker number " + cookerNumber + " started.");
         while(true){
             if (currentOrder == null) {
                 while (true) {
