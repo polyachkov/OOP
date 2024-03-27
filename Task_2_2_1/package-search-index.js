@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"nsu.pizza.additions"},{"l":"nsu.pizza.exceptions"},{"l":"nsu.pizza.info"},{"l":"nsu.pizza.units"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"nsu.pizza"},{"l":"nsu.pizza.additions"},{"l":"nsu.pizza.exceptions"},{"l":"nsu.pizza.info"},{"l":"nsu.pizza.units"}]
