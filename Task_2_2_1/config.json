@@ -1,0 +1,26 @@
+{
+  "storehouseNum": 10,
+  "cookers": [
+    {
+      "cookerNumber": 1,
+      "timeToCook": 10
+    },
+    {
+      "cookerNumber": 2,
+      "timeToCook": 7
+    }
+  ],
+  "delivers": [
+    {
+      "numberDeliver": 1,
+      "timeToDeliver": 5,
+      "numberOfPizzas": 2
+    },
+    {
+      "numberDeliver": 2,
+      "timeToDeliver": 3,
+      "numberOfPizzas": 4
+    }
+  ],
+  "timeToWork": 5
+}

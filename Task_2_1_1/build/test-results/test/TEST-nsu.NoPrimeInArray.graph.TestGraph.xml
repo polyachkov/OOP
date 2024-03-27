@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="nsu.NoPrimeInArray.graph.TestGraph" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-02-29T16:49:59" hostname="DESKTOP-6BQSQQB" time="0.124">
+  <properties/>
+  <testcase name="generatePrimesTest()" classname="nsu.NoPrimeInArray.graph.TestGraph" time="0.111"/>
+  <testcase name="generateArrayTest()" classname="nsu.NoPrimeInArray.graph.TestGraph" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

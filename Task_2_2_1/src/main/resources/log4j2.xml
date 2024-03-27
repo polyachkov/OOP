@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status = "ERROR">
+
+    <Appenders>
+        <Console name="console">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %10c{1} - %m%n" />
+        </Console>
+    </Appenders>
+
+
+    <Loggers>
+        <Logger name="nsu.pizza.PizzeriaApplication" level="debug" additivity="false">
+            <AppenderRef ref = "console"/>
+        </Logger>
+
+        <Logger name="nsu.pizza.units.Cooker" level="debug" additivity="false">
+            <AppenderRef ref = "console"/>
+        </Logger>
+
+        <Logger name="nsu.pizza.units.Delivery" level="debug" additivity="false">
+            <AppenderRef ref = "console"/>
+        </Logger>
+
+        <Logger name="nsu.pizza.additions.ReadInfo" level="debug" additivity="false">
+            <AppenderRef ref = "console"/>
+        </Logger>
+        <Root>
+            <level value="debug" />
+            <AppenderRef ref = "console"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
